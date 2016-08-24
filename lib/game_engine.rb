@@ -45,13 +45,13 @@ class State
     when "look", "l"
       self
     when /look at (.+)/i
-      Looking.new(environment.merge(previous_state: self, subject: items.find { |item| item.names.include?($1) }))
+      Looking.new(update_environment($1))
     when /(quit|exit)/i
       Quit.new(environment)
     when /pick up|take (.+)/i
-      PickingUp.new(environment.merge(previous_state: self, subject: items.find { |item| item.names.include?($1) }))
-    when /talk to| talk (.+)/i
-      Conversation.new(environment.merge(previous_state: self, subject: items.find { |item| item.names.include?($1) }))
+      PickingUp.new(update_environment($1))
+    when /talk to|talk (.+)/i
+      Conversation.new(update_environment($1))
     else
       self
     end
@@ -77,8 +77,8 @@ class State
     environment.fetch(:inventory, [])
   end
 
-  def interactee
-
+  def update_environment(current_subject)
+    environment.merge(previous_state: self, subject: items.find { |item| item.names.include?(current_subject) })
   end
 end
 
@@ -160,7 +160,7 @@ end
 
 class Sasha
   def name
-    "a scruffy developer brandishing a CV"
+    "a scruffy developer brandishing a CV, headed 'Sasha Cooper'"
   end
 
   def pickupable?
@@ -173,6 +173,24 @@ class Sasha
 
   def description
     "He seems to want to show you something"
+  end
+
+  def conversational?
+    true
+  end
+
+  def disposition
+    "at you as though you were one of the Chosen Few"
+  end
+
+  def converse
+    puts "Have you considered reading the CV OF TRUTH?"
+    response = gets.chomp.downcase
+    if response.start_with? 'y'
+      `open ../assets/Sasha_Cooper_CV.pdf`
+    else
+      "Oh."
+    end
   end
 end
 
@@ -191,6 +209,10 @@ class Receptionist
 
   def description
     "They don't look very happy at all."
+  end
+
+  def conversational?
+    true
   end
 end
 
@@ -211,6 +233,32 @@ class PickingUp < State
     else
       "I can't pick up something I can't see!"
     end
+  end
+end
+
+class Conversation < State
+  def initialize(environment)
+    super
+    converse
+  end
+
+  def run(input)
+    previous_state.run(input)
+  end
+
+  def converse
+    if subject && subject.conversational?
+      puts "#{subject.name} looks #{subject.disposition} and says '#{subject.conversation}'"
+      subject.converse
+    elsif subject
+      puts "#{subject.name} stares back inanimately. You think better of the conversation."
+    else
+      puts "You absently mumble to your lost love, hoping they can hear you, wherever they are."
+    end
+  end
+
+  def description
+    "And there, the conversation ends."
   end
 end
 
@@ -248,9 +296,13 @@ class ConfusedMemberOfThePublic
   def description
     "They look very confused indeed"
   end
+
+  def conversational?
+    true
+  end
 end
 
-class AccessCard
+class AccessCard < Inanimate
   def name
     "an access card"
   end
@@ -301,6 +353,22 @@ class Quit < State
 
   def description
     "Any last words?"
+  end
+end
+
+class Inanimate
+  def conversational?
+    false
+  end
+end
+
+class Animate
+  def conversational?
+    true
+  end
+
+  def pickupable?
+    false
   end
 end
 
