@@ -15,9 +15,9 @@ class Sasha < AnimateObject
     puts "Have you considered reading the CV OF TRUTH?"
     response = gets.chomp.downcase
     if response.start_with? 'y'
-      `open ../assets/Sasha_Cooper_CV.pdf`
+      `open assets/Sasha_Cooper_CV.pdf`
     else
-      "Oh."
+      puts "Oh."
     end
   end
 end

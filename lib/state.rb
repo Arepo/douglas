@@ -45,6 +45,9 @@ class State
   end
 
   def updated_environment(current_subject)
-    environment.merge(previous_state: self, subject: items.find { |item| item.names.include?(current_subject) })
+    environment.merge(
+      previous_state: self,
+      subject: items.find { |item| item.names.map(&:downcase).include?(current_subject) }
+    )
   end
 end
