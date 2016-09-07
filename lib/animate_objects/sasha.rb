@@ -4,15 +4,11 @@ class Sasha < AnimateObject
   end
 
   def names
-    ['Sasha', 'developer']
+    ['Sasha', 'developer', 'scruffy developer']
   end
 
   def description
-    "He seems to want to show you something"
-  end
-
-  def disposition
-    "at you as though you were one of the Chosen Few"
+    "He seems to want to show you something."
   end
 
   def converse

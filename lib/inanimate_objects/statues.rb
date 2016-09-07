@@ -1,10 +1,6 @@
-class Statues
+class Statues < InanimateObject
   def name
     "a pair of weird statues"
-  end
-
-  def pickupable?
-    false
   end
 
   def names

@@ -15,10 +15,10 @@ class State
       Looking.new(updated_environment($1))
     when /(quit|exit)/i
       Quit.new(environment)
-    when /pick up|take (.+)/i
-      PickingUp.new(updated_environment($1))
-    when /talk to|talk (.+)/i
-      Conversation.new(updated_environment($1))
+    when /(pick up |take )(.+)/i
+      PickingUp.new(updated_environment($2))
+    when /(talk to |talk )(.+)/i
+      Conversation.new(updated_environment($2))
     else
       self
     end
