@@ -2,11 +2,21 @@ require 'animate_object'
 require 'rspec'
 
 describe AnimateObject do
-  it 'is not pickuppable' do
-    expect(subject).not_to be_pickupable
+  context '#pickupable?' do
+    it 'is not pickupable' do
+      expect(subject).not_to be_pickupable
+    end
   end
 
-  it 'is conversational' do
-    expect(subject).to be_conversational
+  context '#conversational?' do
+    it 'is conversational' do
+      expect(subject).to be_conversational
+    end
+  end
+
+  context '#converse' do
+    it 'requires implementation of #converse' do
+      expect { subject.converse }.to raise_error { NotImplementedError }
+    end
   end
 end

@@ -6,4 +6,8 @@ class AnimateObject
   def pickupable?
     false
   end
+
+  def converse
+    raise NotImplementedError
+  end
 end
