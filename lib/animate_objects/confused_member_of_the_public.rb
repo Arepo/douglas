@@ -1,10 +1,6 @@
-class ConfusedMemberOfThePublic
+class ConfusedMemberOfThePublic < AnimateObject
   def name
     "a confused member of the public"
-  end
-
-  def pickupable?
-    false
   end
 
   def names
@@ -13,9 +9,5 @@ class ConfusedMemberOfThePublic
 
   def description
     "They look very confused indeed"
-  end
-
-  def conversational?
-    true
   end
 end

@@ -4,7 +4,6 @@ Dir["#{File.dirname(__FILE__)}/**/*.rb"].each { |file| require(file) }
 class Game
   def run(state)
     while (input = prompt)
-# binding.pry
       state = state.run(input)
       puts state.description
 

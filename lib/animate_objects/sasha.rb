@@ -1,10 +1,6 @@
-class Sasha
+class Sasha < AnimateObject
   def name
-    "a scruffy developer brandishing a CV, headed 'Sasha Cooper'"
-  end
-
-  def pickupable?
-    true
+    "a scruffy developer brandishing a CV headed 'Sasha Cooper'"
   end
 
   def names
@@ -13,10 +9,6 @@ class Sasha
 
   def description
     "He seems to want to show you something"
-  end
-
-  def conversational?
-    true
   end
 
   def disposition
