@@ -10,7 +10,7 @@ class Greeting < State
 
   def description
     case name_attempts
-    when 1
+    when 2
       "No need to be shy; pray tell, what is your name?"
     when 5
       "Cut me some slack here, I'm going to keep asking you forever. WHAT IS THE NAME?"
