@@ -9,13 +9,7 @@ class Conversation < State
   end
 
   def converse
-    if subject && subject.conversational?
-      subject.converse
-    elsif subject
-      puts "#{subject.name.capitalize} stares back inanimately. You think better of the conversation."
-    else
-      puts "You absently mumble to your lost love, hoping they can hear you, wherever they are."
-    end
+    subject.converse
   end
 
   def description

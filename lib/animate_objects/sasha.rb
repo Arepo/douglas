@@ -4,7 +4,7 @@ class Sasha < AnimateObject
   end
 
   def names
-    ['Sasha', 'developer', 'scruffy developer']
+    ['sasha', 'developer', 'scruffy developer']
   end
 
   def description
@@ -12,12 +12,13 @@ class Sasha < AnimateObject
   end
 
   def converse
-    puts "Have you considered reading the CV OF TRUTH?"
+    puts "'Have you considered reading the CV OF TRUTH?'"
     response = gets.chomp.downcase
     if response.start_with? 'y'
+      puts "'Eeexcellent.'"
       `open assets/Sasha_Cooper_CV.pdf`
     else
-      puts "Oh."
+      puts "'Oh.'"
     end
   end
 end

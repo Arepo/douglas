@@ -8,12 +8,6 @@ describe AnimateObject do
     end
   end
 
-  context '#conversational?' do
-    it 'is conversational' do
-      expect(subject).to be_conversational
-    end
-  end
-
   context '#converse' do
     it 'requires implementation of #converse' do
       expect { subject.converse }.to raise_error { NotImplementedError }

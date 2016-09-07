@@ -12,6 +12,6 @@ class ConfusedMemberOfThePublic < AnimateObject
   end
 
   def converse
-    puts "I feel very confused indeed"
+    puts "'I feel very confused indeed'"
   end
 end

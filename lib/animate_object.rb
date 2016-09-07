@@ -1,13 +1,13 @@
 class AnimateObject
-  def conversational?
-    true
+  def converse
+    raise NotImplementedError
+  end
+
+  def describe_pickup
+    "As your self-appointed lawyer, I advise against it."
   end
 
   def pickupable?
     false
-  end
-
-  def converse
-    raise NotImplementedError
   end
 end

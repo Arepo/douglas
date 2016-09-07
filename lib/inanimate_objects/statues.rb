@@ -10,4 +10,8 @@ class Statues < InanimateObject
   def description
     "The statues fill you with an unprecedented sense of serenity."
   end
+
+  def pickupable?
+    false
+  end
 end
