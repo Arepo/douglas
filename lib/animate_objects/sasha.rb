@@ -8,7 +8,7 @@ class Sasha < AnimateObject
   end
 
   def description
-    "He seems to want to show you something."
+    'He seems to want to show you something.'
   end
 
   def converse
@@ -16,7 +16,7 @@ class Sasha < AnimateObject
     response = gets.chomp.downcase
     if response.start_with? 'y'
       puts "'Eeexcellent.'"
-      `open assets/Sasha_Cooper_CV.pdf`
+      system('open', 'assets/Sasha_Cooper_CV.pdf')
     else
       puts "'Oh.'"
     end

@@ -8,11 +8,13 @@ class Conversation < State
     previous_state.run(input)
   end
 
-  def converse
-    subject.converse
-  end
-
   def description
     # No-op
+  end
+
+  private
+
+  def converse
+    subject.converse
   end
 end

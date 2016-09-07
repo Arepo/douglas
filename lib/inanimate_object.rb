@@ -11,7 +11,11 @@ class InanimateObject
     end
   end
 
+  def name
+    raise NotImplementedError, 'Implement #name'
+  end
+
   def pickupable?
-    raise NotImplementedError
+    raise NotImplementedError, 'Implement #pickupable'
   end
 end

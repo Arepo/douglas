@@ -1,6 +1,6 @@
 class ConfusedMemberOfThePublic < AnimateObject
   def name
-    "a confused member of the public"
+    'a confused member of the public'
   end
 
   def names
